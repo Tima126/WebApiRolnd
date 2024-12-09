@@ -40,3 +40,18 @@ C:\Users\timaf\OneDrive\Рабочий стол\WebApplication1\Domain\obj\Debug
 C:\Users\timaf\OneDrive\Рабочий стол\WebApplication1\Domain\obj\Debug\net6.0\Domain.pdb
 C:\Users\timaf\OneDrive\Рабочий стол\WebApplication1\Domain\obj\Debug\net6.0\Domain.genruntimeconfig.cache
 C:\Users\timaf\OneDrive\Рабочий стол\WebApplication1\Domain\obj\Debug\net6.0\ref\Domain.dll
+C:\WebApiRolnd\Domain\bin\Debug\net6.0\Domain.deps.json
+C:\WebApiRolnd\Domain\bin\Debug\net6.0\Domain.runtimeconfig.json
+C:\WebApiRolnd\Domain\bin\Debug\net6.0\Domain.dll
+C:\WebApiRolnd\Domain\bin\Debug\net6.0\Domain.pdb
+C:\WebApiRolnd\Domain\obj\Debug\net6.0\Domain.csproj.AssemblyReference.cache
+C:\WebApiRolnd\Domain\obj\Debug\net6.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\WebApiRolnd\Domain\obj\Debug\net6.0\Domain.AssemblyInfoInputs.cache
+C:\WebApiRolnd\Domain\obj\Debug\net6.0\Domain.AssemblyInfo.cs
+C:\WebApiRolnd\Domain\obj\Debug\net6.0\Domain.csproj.CoreCompileInputs.cache
+C:\WebApiRolnd\Domain\obj\Debug\net6.0\Domain.sourcelink.json
+C:\WebApiRolnd\Domain\obj\Debug\net6.0\Domain.dll
+C:\WebApiRolnd\Domain\obj\Debug\net6.0\refint\Domain.dll
+C:\WebApiRolnd\Domain\obj\Debug\net6.0\Domain.pdb
+C:\WebApiRolnd\Domain\obj\Debug\net6.0\Domain.genruntimeconfig.cache
+C:\WebApiRolnd\Domain\obj\Debug\net6.0\ref\Domain.dll

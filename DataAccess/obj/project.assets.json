@@ -2036,11 +2036,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\timaf\\OneDrive\\Рабочий стол\\WebApplication1\\DataAccess\\DataAccess.csproj",
+      "projectUniqueName": "C:\\WebApiRolnd\\DataAccess\\DataAccess.csproj",
       "projectName": "DataAccess",
-      "projectPath": "C:\\Users\\timaf\\OneDrive\\Рабочий стол\\WebApplication1\\DataAccess\\DataAccess.csproj",
+      "projectPath": "C:\\WebApiRolnd\\DataAccess\\DataAccess.csproj",
       "packagesPath": "C:\\Users\\timaf\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\timaf\\OneDrive\\Рабочий стол\\WebApplication1\\DataAccess\\obj\\",
+      "outputPath": "C:\\WebApiRolnd\\DataAccess\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\timaf\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -2058,8 +2058,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\timaf\\OneDrive\\Рабочий стол\\WebApplication1\\Domain\\Domain.csproj": {
-              "projectPath": "C:\\Users\\timaf\\OneDrive\\Рабочий стол\\WebApplication1\\Domain\\Domain.csproj"
+            "C:\\WebApiRolnd\\Domain\\Domain.csproj": {
+              "projectPath": "C:\\WebApiRolnd\\Domain\\Domain.csproj"
             }
           }
         }

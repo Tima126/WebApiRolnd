@@ -2445,6 +2445,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
+          "DataAccess": "1.0.0",
           "Domain": "1.0.0",
           "Moq": "4.20.72"
         },
@@ -2453,6 +2454,20 @@
         },
         "runtime": {
           "bin/placeholder/BusinessLogic.dll": {}
+        }
+      },
+      "DataAccess/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Domain": "1.0.0",
+          "Microsoft.EntityFrameworkCore.SqlServer": "6.0.33"
+        },
+        "compile": {
+          "bin/placeholder/DataAccess.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DataAccess.dll": {}
         }
       },
       "Domain/1.0.0": {
@@ -7432,6 +7447,11 @@
       "path": "../BusinessLogic/BusinessLogic.csproj",
       "msbuildProject": "../BusinessLogic/BusinessLogic.csproj"
     },
+    "DataAccess/1.0.0": {
+      "type": "project",
+      "path": "../DataAccess/DataAccess.csproj",
+      "msbuildProject": "../DataAccess/DataAccess.csproj"
+    },
     "Domain/1.0.0": {
       "type": "project",
       "path": "../Domain/Domain.csproj",
@@ -7454,11 +7474,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\timaf\\OneDrive\\Рабочий стол\\WebApplication1\\BusinessLogic.Tests\\BusinessLogic.Tests.csproj",
+      "projectUniqueName": "C:\\WebApiRolnd\\BusinessLogic.Tests\\BusinessLogic.Tests.csproj",
       "projectName": "BusinessLogic.Tests",
-      "projectPath": "C:\\Users\\timaf\\OneDrive\\Рабочий стол\\WebApplication1\\BusinessLogic.Tests\\BusinessLogic.Tests.csproj",
+      "projectPath": "C:\\WebApiRolnd\\BusinessLogic.Tests\\BusinessLogic.Tests.csproj",
       "packagesPath": "C:\\Users\\timaf\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\timaf\\OneDrive\\Рабочий стол\\WebApplication1\\BusinessLogic.Tests\\obj\\",
+      "outputPath": "C:\\WebApiRolnd\\BusinessLogic.Tests\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\timaf\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -7476,8 +7496,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\timaf\\OneDrive\\Рабочий стол\\WebApplication1\\BusinessLogic\\BusinessLogic.csproj": {
-              "projectPath": "C:\\Users\\timaf\\OneDrive\\Рабочий стол\\WebApplication1\\BusinessLogic\\BusinessLogic.csproj"
+            "C:\\WebApiRolnd\\BusinessLogic\\BusinessLogic.csproj": {
+              "projectPath": "C:\\WebApiRolnd\\BusinessLogic\\BusinessLogic.csproj"
             }
           }
         }

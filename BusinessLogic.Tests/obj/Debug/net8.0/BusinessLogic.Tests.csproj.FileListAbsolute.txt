@@ -147,3 +147,13 @@ C:\Users\user\Desktop\учеба\WebApplication1\BusinessLogic.Tests\obj\Debug\n
 C:\Users\user\Desktop\учеба\WebApplication1\BusinessLogic.Tests\obj\Debug\net8.0\BusinessLogic.Tests.pdb
 C:\Users\user\Desktop\учеба\WebApplication1\BusinessLogic.Tests\obj\Debug\net8.0\BusinessLogic.Tests.genruntimeconfig.cache
 C:\Users\user\Desktop\учеба\WebApplication1\BusinessLogic.Tests\obj\Debug\net8.0\ref\BusinessLogic.Tests.dll
+C:\WebApiRolnd\BusinessLogic.Tests\bin\Debug\net8.0\CoverletSourceRootsMapping_BusinessLogic.Tests
+C:\WebApiRolnd\BusinessLogic.Tests\obj\Debug\net8.0\BusinessLogic.Tests.csproj.AssemblyReference.cache
+C:\WebApiRolnd\BusinessLogic.Tests\obj\Debug\net8.0\BusinessLogic.Tests.GeneratedMSBuildEditorConfig.editorconfig
+C:\WebApiRolnd\BusinessLogic.Tests\obj\Debug\net8.0\BusinessLogic.Tests.AssemblyInfoInputs.cache
+C:\WebApiRolnd\BusinessLogic.Tests\obj\Debug\net8.0\BusinessLogic.Tests.AssemblyInfo.cs
+C:\WebApiRolnd\BusinessLogic.Tests\obj\Debug\net8.0\BusinessLogic.Tests.csproj.CoreCompileInputs.cache
+C:\WebApiRolnd\BusinessLogic.Tests\obj\Debug\net8.0\BusinessLogic.Tests.sourcelink.json
+C:\WebApiRolnd\BusinessLogic.Tests\obj\Debug\net8.0\BusinessLogic.Tests.dll
+C:\WebApiRolnd\BusinessLogic.Tests\obj\Debug\net8.0\refint\BusinessLogic.Tests.dll
+C:\WebApiRolnd\BusinessLogic.Tests\obj\Debug\net8.0\BusinessLogic.Tests.pdb
