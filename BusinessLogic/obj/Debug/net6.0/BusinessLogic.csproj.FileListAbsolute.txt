@@ -43,3 +43,21 @@ C:\Users\timaf\OneDrive\Рабочий стол\WebApplication1\BusinessLogic\ob
 C:\Users\timaf\OneDrive\Рабочий стол\WebApplication1\BusinessLogic\obj\Debug\net6.0\refint\BusinessLogic.dll
 C:\Users\timaf\OneDrive\Рабочий стол\WebApplication1\BusinessLogic\obj\Debug\net6.0\BusinessLogic.pdb
 C:\Users\timaf\OneDrive\Рабочий стол\WebApplication1\BusinessLogic\obj\Debug\net6.0\ref\BusinessLogic.dll
+C:\WebApiRolnd\BusinessLogic\bin\Debug\net6.0\BusinessLogic.deps.json
+C:\WebApiRolnd\BusinessLogic\bin\Debug\net6.0\BusinessLogic.dll
+C:\WebApiRolnd\BusinessLogic\bin\Debug\net6.0\BusinessLogic.pdb
+C:\WebApiRolnd\BusinessLogic\bin\Debug\net6.0\Domain.dll
+C:\WebApiRolnd\BusinessLogic\bin\Debug\net6.0\Domain.pdb
+C:\WebApiRolnd\BusinessLogic\obj\Debug\net6.0\BusinessLogic.csproj.AssemblyReference.cache
+C:\WebApiRolnd\BusinessLogic\obj\Debug\net6.0\BusinessLogic.GeneratedMSBuildEditorConfig.editorconfig
+C:\WebApiRolnd\BusinessLogic\obj\Debug\net6.0\BusinessLogic.AssemblyInfoInputs.cache
+C:\WebApiRolnd\BusinessLogic\obj\Debug\net6.0\BusinessLogic.AssemblyInfo.cs
+C:\WebApiRolnd\BusinessLogic\obj\Debug\net6.0\BusinessLogic.csproj.CoreCompileInputs.cache
+C:\WebApiRolnd\BusinessLogic\obj\Debug\net6.0\BusinessLogic.sourcelink.json
+C:\WebApiRolnd\BusinessLogic\obj\Debug\net6.0\Business.CF5D6E35.Up2Date
+C:\WebApiRolnd\BusinessLogic\obj\Debug\net6.0\BusinessLogic.dll
+C:\WebApiRolnd\BusinessLogic\obj\Debug\net6.0\refint\BusinessLogic.dll
+C:\WebApiRolnd\BusinessLogic\obj\Debug\net6.0\BusinessLogic.pdb
+C:\WebApiRolnd\BusinessLogic\obj\Debug\net6.0\ref\BusinessLogic.dll
+C:\WebApiRolnd\BusinessLogic\bin\Debug\net6.0\DataAccess.dll
+C:\WebApiRolnd\BusinessLogic\bin\Debug\net6.0\DataAccess.pdb

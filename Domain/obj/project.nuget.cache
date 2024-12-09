@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "YUAyoCAOzMo=",
+  "dgSpecHash": "LFwFKTNsQk0=",
   "success": true,
-  "projectFilePath": "C:\\Users\\timaf\\OneDrive\\Рабочий стол\\WebApplication1\\Domain\\Domain.csproj",
+  "projectFilePath": "C:\\WebApiRolnd\\Domain\\Domain.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\timaf\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\timaf\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",

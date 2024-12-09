@@ -46,3 +46,21 @@ C:\Users\timaf\OneDrive\Рабочий стол\WebApplication1\DataAccess\obj\D
 C:\Users\timaf\OneDrive\Рабочий стол\WebApplication1\DataAccess\obj\Debug\net6.0\DataAccess.pdb
 C:\Users\timaf\OneDrive\Рабочий стол\WebApplication1\DataAccess\obj\Debug\net6.0\DataAccess.genruntimeconfig.cache
 C:\Users\timaf\OneDrive\Рабочий стол\WebApplication1\DataAccess\obj\Debug\net6.0\ref\DataAccess.dll
+C:\WebApiRolnd\DataAccess\bin\Debug\net6.0\DataAccess.deps.json
+C:\WebApiRolnd\DataAccess\bin\Debug\net6.0\DataAccess.runtimeconfig.json
+C:\WebApiRolnd\DataAccess\bin\Debug\net6.0\DataAccess.dll
+C:\WebApiRolnd\DataAccess\bin\Debug\net6.0\DataAccess.pdb
+C:\WebApiRolnd\DataAccess\bin\Debug\net6.0\Domain.dll
+C:\WebApiRolnd\DataAccess\bin\Debug\net6.0\Domain.pdb
+C:\WebApiRolnd\DataAccess\obj\Debug\net6.0\DataAccess.csproj.AssemblyReference.cache
+C:\WebApiRolnd\DataAccess\obj\Debug\net6.0\DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\WebApiRolnd\DataAccess\obj\Debug\net6.0\DataAccess.AssemblyInfoInputs.cache
+C:\WebApiRolnd\DataAccess\obj\Debug\net6.0\DataAccess.AssemblyInfo.cs
+C:\WebApiRolnd\DataAccess\obj\Debug\net6.0\DataAccess.csproj.CoreCompileInputs.cache
+C:\WebApiRolnd\DataAccess\obj\Debug\net6.0\DataAccess.sourcelink.json
+C:\WebApiRolnd\DataAccess\obj\Debug\net6.0\DataAccess.csproj.Up2Date
+C:\WebApiRolnd\DataAccess\obj\Debug\net6.0\DataAccess.dll
+C:\WebApiRolnd\DataAccess\obj\Debug\net6.0\refint\DataAccess.dll
+C:\WebApiRolnd\DataAccess\obj\Debug\net6.0\DataAccess.pdb
+C:\WebApiRolnd\DataAccess\obj\Debug\net6.0\DataAccess.genruntimeconfig.cache
+C:\WebApiRolnd\DataAccess\obj\Debug\net6.0\ref\DataAccess.dll

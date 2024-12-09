@@ -1,0 +1,6 @@
+@webapirold_HostAddress = http://localhost:5023
+
+GET {{webapirold_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
