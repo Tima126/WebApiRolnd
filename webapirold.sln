@@ -20,7 +20,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Элементы решен
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{F182D641-F444-4F86-BBAE-81EB297947B8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webapirold", "webapirold\webapirold.csproj", "{6A0835B3-7496-409B-882B-6DBE609FD9C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "webapirold", "webapirold\webapirold.csproj", "{6A0835B3-7496-409B-882B-6DBE609FD9C4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorApp2", "BlazorApp2\BlazorApp2.csproj", "{0A4B7A96-58B7-4EA7-A172-ABE906CE284C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -48,6 +50,10 @@ Global
 		{6A0835B3-7496-409B-882B-6DBE609FD9C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A0835B3-7496-409B-882B-6DBE609FD9C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A0835B3-7496-409B-882B-6DBE609FD9C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A4B7A96-58B7-4EA7-A172-ABE906CE284C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A4B7A96-58B7-4EA7-A172-ABE906CE284C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A4B7A96-58B7-4EA7-A172-ABE906CE284C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A4B7A96-58B7-4EA7-A172-ABE906CE284C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -58,6 +64,7 @@ Global
 		{9F22BAEA-2C62-430A-9D2E-170E410EBC20} = {3F5BBBE8-39D1-4DB3-96AA-64AA5BAB14F5}
 		{9EFC8CA8-10C2-4043-B547-F54CA4CF08BA} = {F182D641-F444-4F86-BBAE-81EB297947B8}
 		{6A0835B3-7496-409B-882B-6DBE609FD9C4} = {3F5BBBE8-39D1-4DB3-96AA-64AA5BAB14F5}
+		{0A4B7A96-58B7-4EA7-A172-ABE906CE284C} = {3F5BBBE8-39D1-4DB3-96AA-64AA5BAB14F5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BDB96031-D5C3-4F09-9B34-6C9BE4C9E0FD}

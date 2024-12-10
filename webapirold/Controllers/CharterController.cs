@@ -2,6 +2,10 @@
 using Microsoft.AspNetCore.Mvc;
 
 using Domain.Models;
+using Domain.Interfaces.Service;
+using WebApplication1.Contract;
+using webapirold.Contract;
+using Mapster;
 
 namespace SocNet.Controllers
 {
@@ -9,11 +13,11 @@ namespace SocNet.Controllers
     [ApiController]
     public class CharterController : ControllerBase
     {
-        public RolandContext Context { get; }
+        private readonly ICharterService _charter;
 
-        public CharterController(RolandContext context)
+        public CharterController(ICharterService context)
         {
-            Context = context;
+            _charter = context;
         }
 
         /// <summary>
@@ -21,10 +25,10 @@ namespace SocNet.Controllers
         /// </summary>
         /// <returns>Список всех чартеров.</returns>
         [HttpGet]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAll()
         {
-            List<Charter> Charter = Context.Charters.ToList();
-            return Ok(Charter);
+            var airport = await _charter.GetAll();
+            return Ok(airport);
         }
 
         /// <summary>
@@ -35,16 +39,15 @@ namespace SocNet.Controllers
         /// <response code="200">Возвращает чартер.</response>
         /// <response code="400">Если чартер не найден.</response>
         [HttpGet("{id}")]
-        public IActionResult GetById(int id)
+        public async Task<IActionResult> GetById(int id)
         {
-            Charter? Charter = Context.Charters.Where(x => x.CharterId == id).FirstOrDefault();
-            if (Charter == null)
+            var charter = await _charter.GetById(id);
+            if (charter == null)
             {
-                return BadRequest("Not Found");
+                return NotFound();
             }
-            return Ok(Charter);
+            return Ok(charter);
         }
-
         /// <summary>
         /// Создание нового чартера.
         /// </summary>
@@ -52,13 +55,12 @@ namespace SocNet.Controllers
         /// <returns>Созданный чартер.</returns>
         /// <response code="200">Возвращает созданный чартер.</response>
         [HttpPost]
-        public IActionResult Add(Charter Charter)
+        public async Task<IActionResult> Create(CreateCharter req)
         {
-            Context.Charters.Add(Charter);
-            Context.SaveChanges();
+            var charter = req.Adapt<Charter>();
+            await _charter.Create(charter);
             return Ok();
         }
-
         /// <summary>
         /// Обновление существующего чартера.
         /// </summary>
@@ -66,11 +68,11 @@ namespace SocNet.Controllers
         /// <returns>Результат обновления.</returns>
         /// <response code="200">Если чартер успешно обновлен.</response>
         [HttpPut]
-        public IActionResult Update(Charter Charter)
+        public async Task<IActionResult> Update(CreateCharter req)
         {
-            Context.Charters.Update(Charter);
-            Context.SaveChanges();
-            return Ok(Charter);
+            var charter = req.Adapt<Charter>();
+            await _charter.Update(charter);
+            return Ok();
         }
 
         /// <summary>
@@ -80,12 +82,16 @@ namespace SocNet.Controllers
         /// <returns>Результат удаления.</returns>
         /// <response code="200">Если чартер успешно удален.</response>
         /// <response code="400">Если чартер не найден.</response>
-        [HttpDelete]
-        public IActionResult Delete(int id)
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
         {
-            Charter? Charter = Context.Charters.Where(x => x.CharterId == id).FirstOrDefault();
-            Context.Charters.Remove(Charter);
-            Context.SaveChanges();
+            var charter = await _charter.GetById(id);
+
+            if (charter == null)
+            {
+                return BadRequest();
+            }
+            await _charter.Delete(id);
             return Ok();
         }
     }

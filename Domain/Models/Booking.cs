@@ -9,7 +9,7 @@ namespace Domain.Models
         {
             Tickets = new HashSet<Ticket>();
             Passengers = new HashSet<Passenger>();
-            Services = new HashSet<SpecialService>();
+            Services = new HashSet<Special>();
         }
 
         public int BookingId { get; set; }
@@ -23,6 +23,6 @@ namespace Domain.Models
         public virtual ICollection<Ticket> Tickets { get; set; }
 
         public virtual ICollection<Passenger> Passengers { get; set; }
-        public virtual ICollection<SpecialService> Services { get; set; }
+        public virtual ICollection<Special> Services { get; set; }
     }
 }

@@ -2,6 +2,11 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Domain.Models;
+using Domain.Interfaces.Service;
+using Microsoft.EntityFrameworkCore.Migrations;
+using WebApplication1.Contract;
+using webapirold.Contract;
+using Mapster;
 
 namespace SocNet.Controllers
 {
@@ -9,11 +14,11 @@ namespace SocNet.Controllers
     [ApiController]
     public class HisController : ControllerBase
     {
-        public RolandContext Context { get; }
+        private readonly IHistorySevice _history;
 
-        public HisController(RolandContext context)
+        public HisController(IHistorySevice context)
         {
-            Context = context;
+            _history = context;
         }
 
         /// <summary>
@@ -21,10 +26,10 @@ namespace SocNet.Controllers
         /// </summary>
         /// <returns>Список всех записей истории изменений.</returns>
         [HttpGet]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAll()
         {
-            List<ChangeHistory> ChangeHistory = Context.ChangeHistories.ToList();
-            return Ok(ChangeHistory);
+            var history = await _history.GetAll();
+            return Ok(history);
         }
 
         /// <summary>
@@ -35,14 +40,14 @@ namespace SocNet.Controllers
         /// <response code="200">Возвращает запись истории изменений.</response>
         /// <response code="400">Если запись истории изменений не найдена.</response>
         [HttpGet("{id}")]
-        public IActionResult GetById(int id)
+        public async Task<IActionResult> GetById(int id)
         {
-            ChangeHistory? ChangeHistory = Context.ChangeHistories.Where(x => x.UserId == id).FirstOrDefault();
-            if (ChangeHistory == null)
+            var history = await _history.GetById(id);
+            if (history == null)
             {
-                return BadRequest("Not Found");
+                return NotFound();
             }
-            return Ok(ChangeHistory);
+            return Ok(history);
         }
 
         /// <summary>
@@ -52,10 +57,10 @@ namespace SocNet.Controllers
         /// <returns>Созданная запись истории изменений.</returns>
         /// <response code="200">Возвращает созданную запись истории изменений.</response>
         [HttpPost]
-        public IActionResult Add(ChangeHistory ChangeHistory)
+        public async Task<IActionResult> Create(CreateChangesHistory req)
         {
-            Context.ChangeHistories.Add(ChangeHistory);
-            Context.SaveChanges();
+            var history = req.Adapt<ChangeHistory>();
+            await _history.Create(history);
             return Ok();
         }
 
@@ -66,11 +71,12 @@ namespace SocNet.Controllers
         /// <returns>Результат обновления.</returns>
         /// <response code="200">Если запись истории изменений успешно обновлена.</response>
         [HttpPut]
-        public IActionResult Update(ChangeHistory ChangeHistory)
+        public async Task<IActionResult> Update(CreateAirport req)
         {
-            Context.ChangeHistories.Update(ChangeHistory);
-            Context.SaveChanges();
-            return Ok(ChangeHistory);
+            var history = req.Adapt<ChangeHistory>();
+            await _history.Update(history);
+
+            return NoContent();
         }
 
         /// <summary>
@@ -80,12 +86,16 @@ namespace SocNet.Controllers
         /// <returns>Результат удаления.</returns>
         /// <response code="200">Если запись истории изменений успешно удалена.</response>
         /// <response code="400">Если запись истории изменений не найдена.</response>
-        [HttpDelete]
-        public IActionResult Delete(int id)
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
         {
-            ChangeHistory? ChangeHistory = Context.ChangeHistories.Where(x => x.ChangeId == id).FirstOrDefault();
-            Context.ChangeHistories.Remove(ChangeHistory);
-            Context.SaveChanges();
+            var history = await _history.GetById(id);
+
+            if (history == null)
+            {
+                return BadRequest();
+            }
+            await _history.Delete(id);
             return Ok();
         }
     }

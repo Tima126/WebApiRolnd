@@ -4,6 +4,7 @@ using BusinessLogic.Sevices;
 using WebApplication1.Contract;
 using Mapster;
 using Domain.Interfaces.Service;
+using webapirold.Contract;
 
 namespace SocNet.Controllers
 {
@@ -52,7 +53,7 @@ namespace SocNet.Controllers
         /// <returns>Созданный пользователь.</returns>
         /// <response code="201">Возвращает созданный пользователь.</response>
         [HttpPost]
-        public async Task<IActionResult> Create(CreateUserRequest req)
+        public async Task<IActionResult> Create(CreateUser req)
         {
             var user = req.Adapt<User>();
             await _userService.Create(user);
@@ -65,7 +66,7 @@ namespace SocNet.Controllers
         /// <returns>Результат обновления.</returns>
         /// <response code="204">Если пользователь успешно обновлен.</response>
         [HttpPut]
-        public async Task <IActionResult> Update(CreateUserRequest req)
+        public async Task <IActionResult> Update(CreateUser req)
         {
             var user = req.Adapt<User>();
             await _userService.Update(user);

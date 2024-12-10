@@ -27,7 +27,7 @@ namespace Domain.Models
         public virtual DbSet<Passenger> Passengers { get; set; } = null!;
         public virtual DbSet<Review> Reviews { get; set; } = null!;
         public virtual DbSet<Role> Roles { get; set; } = null!;
-        public virtual DbSet<SpecialService> SpecialServices { get; set; } = null!;
+        public virtual DbSet<Special> SpecialServices { get; set; } = null!;
         public virtual DbSet<Ticket> Tickets { get; set; } = null!;
         public virtual DbSet<User> Users { get; set; } = null!;
 
@@ -118,7 +118,7 @@ namespace Domain.Models
                     .WithMany(p => p.Bookings)
                     .UsingEntity<Dictionary<string, object>>(
                         "BookingService",
-                        l => l.HasOne<SpecialService>().WithMany().HasForeignKey("ServiceId").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK__BookingSe__Servi__5BE2A6F2"),
+                        l => l.HasOne<Special>().WithMany().HasForeignKey("ServiceId").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK__BookingSe__Servi__5BE2A6F2"),
                         r => r.HasOne<Booking>().WithMany().HasForeignKey("BookingId").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK__BookingSe__Booki__5AEE82B9"),
                         j =>
                         {
@@ -262,7 +262,7 @@ namespace Domain.Models
                 entity.Property(e => e.RoleName).HasMaxLength(50);
             });
 
-            modelBuilder.Entity<SpecialService>(entity =>
+            modelBuilder.Entity<Special>(entity =>
             {
                 entity.HasKey(e => e.ServiceId)
                     .HasName("PK__SpecialS__C51BB0EA257E70C1");

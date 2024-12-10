@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "sZK+U4UMMfs=",
+  "dgSpecHash": "dy8M3TCTAgI=",
   "success": true,
-  "projectFilePath": "C:\\WebApiRolnd\\webapirold\\webapirold.csproj",
+  "projectFilePath": "C:\\Users\\timaf\\OneDrive\\Рабочий стол\\RoldAirport\\webapirold\\webapirold.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\timaf\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\timaf\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

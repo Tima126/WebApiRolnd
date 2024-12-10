@@ -29,7 +29,7 @@ namespace BusinessLogic.Tests
 
         [Theory]
         [MemberData(nameof(GetIncorrectServices))]
-        public async Task CreateAsync_NewServiceShouldNotCreateNewService(SpecialService service)
+        public async Task CreateAsync_NewServiceShouldNotCreateNewService(Special service)
         {
             // arrange
             var newService = service;
@@ -39,24 +39,24 @@ namespace BusinessLogic.Tests
 
             // assert
             Assert.IsType<ArgumentNullException>(ex);
-            serviceRepositoryMoq.Verify(x => x.Create(It.IsAny<SpecialService>()), Times.Never);
+            serviceRepositoryMoq.Verify(x => x.Create(It.IsAny<Special>()), Times.Never);
         }
 
         public static IEnumerable<object[]> GetIncorrectServices()
         {
             return new List<object[]>
             {
-                new object[] { new SpecialService { ServiceName = "", Description = null, Bookings = null } },
-                new object[] { new SpecialService { ServiceName = "TestService", Description = null, Bookings = null } },
-                new object[] { new SpecialService { ServiceName = "", Description = "TestDescription", Bookings = null } },
-                new object[] { new SpecialService { ServiceName = "", Description = null, Bookings = new List<Booking>() } },
+                new object[] { new Special { ServiceName = "", Description = null, Bookings = null } },
+                new object[] { new Special { ServiceName = "TestService", Description = null, Bookings = null } },
+                new object[] { new Special { ServiceName = "", Description = "TestDescription", Bookings = null } },
+                new object[] { new Special { ServiceName = "", Description = null, Bookings = new List<Booking>() } },
             };
         }
 
         [Fact]
         public async Task CreateAsyncNewServiceShouldNotCreateNewService()
         {
-            var newService = new SpecialService
+            var newService = new Special
             {
                 ServiceName = "TestService",
                 Description = "TestDescription",
@@ -67,7 +67,7 @@ namespace BusinessLogic.Tests
             await service.Create(newService);
 
             // assert
-            serviceRepositoryMoq.Verify(x => x.Create(It.IsAny<SpecialService>()), Times.Once);
+            serviceRepositoryMoq.Verify(x => x.Create(It.IsAny<Special>()), Times.Once);
         }
     }
 }

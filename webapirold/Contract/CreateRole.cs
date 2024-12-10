@@ -1,12 +1,8 @@
-﻿using Domain.Models;
-
-namespace WebApplication1.Contract
+﻿namespace webapirold.Contract
 {
     public class CreateRole
     {
-        
+        public int RoleId { get; set; }
         public string RoleName { get; set; } = null!;
-
-
     }
 }

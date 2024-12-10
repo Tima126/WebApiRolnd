@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "YUJvuEeq1eU=",
+  "dgSpecHash": "iY9LFYKMECs=",
   "success": true,
-  "projectFilePath": "C:\\WebApiRolnd\\BusinessLogic\\BusinessLogic.csproj",
+  "projectFilePath": "C:\\Users\\timaf\\OneDrive\\Рабочий стол\\RoldAirport\\BusinessLogic\\BusinessLogic.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\timaf\\.nuget\\packages\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",
     "C:\\Users\\timaf\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",

@@ -1,6 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Domain.Models;
+using Domain.Interfaces.Service;
+using WebApplication1.Contract;
+using webapirold.Contract;
+using Mapster;
 
 
 namespace SocNet.Controllers
@@ -9,22 +13,21 @@ namespace SocNet.Controllers
     [ApiController]
     public class ReviewController : ControllerBase
     {
-        public RolandContext Context { get; }
+        private readonly IReviewService _review;
 
-        public ReviewController(RolandContext context)
+        public ReviewController(IReviewService context)
         {
-            Context = context;
+            _review = context;
         }
-
         /// <summary>
         /// Получение всех отзывов.
         /// </summary>
         /// <returns>Список всех отзывов.</returns>
         [HttpGet]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAll()
         {
-            List<Review> Review = Context.Reviews.ToList();
-            return Ok(Review);
+            var review = await _review.GetAll();
+            return Ok(review);
         }
 
         /// <summary>
@@ -35,14 +38,14 @@ namespace SocNet.Controllers
         /// <response code="200">Возвращает отзыв.</response>
         /// <response code="400">Если отзыв не найден.</response>
         [HttpGet("{id}")]
-        public IActionResult GetById(int id)
+        public async Task<IActionResult> GetById(int id)
         {
-            Review? Review = Context.Reviews.Where(x => x.ReviewId == id).FirstOrDefault();
-            if (Review == null)
+            var review = await _review.GetById(id);
+            if (review == null)
             {
-                return BadRequest("Not Found");
+                return NotFound();
             }
-            return Ok(Review);
+            return Ok(review);
         }
 
         /// <summary>
@@ -52,10 +55,10 @@ namespace SocNet.Controllers
         /// <returns>Созданный отзыв.</returns>
         /// <response code="200">Возвращает созданный отзыв.</response>
         [HttpPost]
-        public IActionResult Add(Review Review)
+        public async Task<IActionResult> Create(CreateReview req)
         {
-            Context.Reviews.Add(Review);
-            Context.SaveChanges();
+            var review = req.Adapt<Review>();
+            await _review.Create(review);
             return Ok();
         }
 
@@ -66,11 +69,12 @@ namespace SocNet.Controllers
         /// <returns>Результат обновления.</returns>
         /// <response code="200">Если отзыв успешно обновлен.</response>
         [HttpPut]
-        public IActionResult Update(Review Review)
+        public async Task<IActionResult> Update(CreateReview req)
         {
-            Context.Reviews.Update(Review);
-            Context.SaveChanges();
-            return Ok(Review);
+            var review = req.Adapt<Review>();
+            await _review.Update(review);
+
+            return NoContent();
         }
 
         /// <summary>
@@ -80,12 +84,16 @@ namespace SocNet.Controllers
         /// <returns>Результат удаления.</returns>
         /// <response code="200">Если отзыв успешно удален.</response>
         /// <response code="400">Если отзыв не найден.</response>
-        [HttpDelete]
-        public IActionResult Delete(int id)
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
         {
-            Review? Review = Context.Reviews.Where(x => x.ReviewId == id).FirstOrDefault();
-            Context.Reviews.Remove(Review);
-            Context.SaveChanges();
+            var review = await _review.GetById(id);
+
+            if (review == null)
+            {
+                return BadRequest();
+            }
+            await _review.Delete(id);
             return Ok();
         }
     }

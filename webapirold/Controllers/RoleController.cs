@@ -2,6 +2,10 @@
 using Microsoft.AspNetCore.Mvc;
 
 using Domain.Models;
+using Domain.Interfaces.Service;
+using WebApplication1.Contract;
+using webapirold.Contract;
+using Mapster;
 
 namespace SocNet.Controllers
 {
@@ -9,11 +13,11 @@ namespace SocNet.Controllers
     [ApiController]
     public class RoleController : ControllerBase
     {
-        public RolandContext Context { get; }
+        private readonly IRoleService _role;
 
-        public RoleController(RolandContext context)
+        public RoleController(IRoleService context)
         {
-            Context = context;
+            _role = context;
         }
 
         /// <summary>
@@ -21,10 +25,10 @@ namespace SocNet.Controllers
         /// </summary>
         /// <returns>Список всех ролей.</returns>
         [HttpGet]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAll()
         {
-            List<Role> Role = Context.Roles.ToList();
-            return Ok(Role);
+            var role = await _role.GetAll();
+            return Ok(role);
         }
 
         /// <summary>
@@ -35,14 +39,14 @@ namespace SocNet.Controllers
         /// <response code="200">Возвращает роль.</response>
         /// <response code="400">Если роль не найдена.</response>
         [HttpGet("{id}")]
-        public IActionResult GetById(int id)
+        public async Task<IActionResult> GetById(int id)
         {
-            Role? Role = Context.Roles.Where(x => x.RoleId == id).FirstOrDefault();
-            if (Role == null)
+            var role = await _role.GetById(id);
+            if (role == null)
             {
-                return BadRequest("Not Found");
+                return NotFound();
             }
-            return Ok(Role);
+            return Ok(role);
         }
 
         /// <summary>
@@ -52,10 +56,10 @@ namespace SocNet.Controllers
         /// <returns>Созданная роль.</returns>
         /// <response code="200">Возвращает созданную роль.</response>
         [HttpPost]
-        public IActionResult Add(Role Role)
+        public async Task<IActionResult> Create(CreateRole req)
         {
-            Context.Roles.Add(Role);
-            Context.SaveChanges();
+            var role = req.Adapt<Role>();
+            await _role.Create(role);
             return Ok();
         }
 
@@ -66,11 +70,13 @@ namespace SocNet.Controllers
         /// <returns>Результат обновления.</returns>
         /// <response code="200">Если роль успешно обновлена.</response>
         [HttpPut]
-        public IActionResult Update(Role Role)
+        public async Task<IActionResult> Update(CreateRole req)
         {
-            Context.Roles.Update(Role);
-            Context.SaveChanges();
-            return Ok(Role);
+            var role = req.Adapt<Role>();
+            await _role.Update(role);
+            return Ok();
+
+
         }
 
         /// <summary>
@@ -80,12 +86,16 @@ namespace SocNet.Controllers
         /// <returns>Результат удаления.</returns>
         /// <response code="200">Если роль успешно удалена.</response>
         /// <response code="400">Если роль не найдена.</response>
-        [HttpDelete]
-        public IActionResult Delete(int id)
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
         {
-            Role? Role = Context.Roles.Where(x => x.RoleId == id).FirstOrDefault();
-            Context.Roles.Remove(Role);
-            Context.SaveChanges();
+            var role = await _role.GetById(id);
+
+            if (role == null)
+            {
+                return BadRequest();
+            }
+            await _role.Delete(id);
             return Ok();
         }
     }

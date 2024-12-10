@@ -20,17 +20,17 @@ namespace BusinessLogic.Sevices
             _repositoryWrapper = repositoryWrapper;
         }
 
-        public async Task<List<SpecialService>> GetAll()
+        public async Task<List<Special>> GetAll()
         {
             return await _repositoryWrapper.Special.FindAll();
         }
-        public async Task<SpecialService> GetById(int id)
+        public async Task<Special> GetById(int id)
         {
             var special = await _repositoryWrapper.Special
                 .FindByCondition(x => x.ServiceId == id);
             return special.First();
         }
-        public async Task Create(SpecialService model)
+        public async Task Create(Special model)
         {
             if (model == null)
             {
@@ -45,7 +45,7 @@ namespace BusinessLogic.Sevices
             await _repositoryWrapper.Save();
         }
 
-        public async Task Update(SpecialService model)
+        public async Task Update(Special model)
         {
             await _repositoryWrapper.Special.Update(model);
             await _repositoryWrapper.Save();

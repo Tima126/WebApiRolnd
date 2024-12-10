@@ -1,6 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Domain.Models;
+using Domain.Interfaces.Service;
+using WebApplication1.Contract;
+using webapirold.Contract;
+using Mapster;
 
 
 namespace SocNet.Controllers
@@ -9,11 +13,11 @@ namespace SocNet.Controllers
     [ApiController]
     public class PassengerController : ControllerBase
     {
-        public RolandContext Context { get; }
+        private readonly IPassengerService _passanger;
 
-        public PassengerController(RolandContext context)
+        public PassengerController(IPassengerService context)
         {
-            Context = context;
+            _passanger = context;
         }
 
         /// <summary>
@@ -21,10 +25,10 @@ namespace SocNet.Controllers
         /// </summary>
         /// <returns>Список всех пассажиров.</returns>
         [HttpGet]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAll()
         {
-            List<Passenger> Passenger = Context.Passengers.ToList();
-            return Ok(Passenger);
+            var passanger = await _passanger.GetAll();
+            return Ok(passanger);
         }
 
         /// <summary>
@@ -35,14 +39,14 @@ namespace SocNet.Controllers
         /// <response code="200">Возвращает пассажира.</response>
         /// <response code="400">Если пассажир не найден.</response>
         [HttpGet("{id}")]
-        public IActionResult GetById(int id)
+        public async Task<IActionResult> GetById(int id)
         {
-            Passenger? Passenger = Context.Passengers.Where(x => x.PassengerId == id).FirstOrDefault();
-            if (Passenger == null)
+            var passanger = await _passanger.GetById(id);
+            if (passanger == null)
             {
-                return BadRequest("Not Found");
+                return NotFound();
             }
-            return Ok(Passenger);
+            return Ok(passanger);
         }
 
         /// <summary>
@@ -52,10 +56,10 @@ namespace SocNet.Controllers
         /// <returns>Созданный пассажир.</returns>
         /// <response code="200">Возвращает созданного пассажира.</response>
         [HttpPost]
-        public IActionResult Add(Passenger Passenger)
+        public async Task<IActionResult> Create(CreatePassenger req)
         {
-            Context.Passengers.Add(Passenger);
-            Context.SaveChanges();
+            var passanger = req.Adapt<Passenger>();
+            await _passanger.Create(passanger);
             return Ok();
         }
 
@@ -66,13 +70,13 @@ namespace SocNet.Controllers
         /// <returns>Результат обновления.</returns>
         /// <response code="200">Если пассажир успешно обновлен.</response>
         [HttpPut]
-        public IActionResult Update(Passenger Passenger)
+        public async Task<IActionResult> Update(CreatePassenger req)
         {
-            Context.Passengers.Update(Passenger);
-            Context.SaveChanges();
-            return Ok(Passenger);
-        }
+            var passanger = req.Adapt<Passenger>();
+            await _passanger.Update(passanger);
 
+            return NoContent();
+        }
         /// <summary>
         /// Удаление пассажира по идентификатору.
         /// </summary>
@@ -80,12 +84,16 @@ namespace SocNet.Controllers
         /// <returns>Результат удаления.</returns>
         /// <response code="200">Если пассажир успешно удален.</response>
         /// <response code="400">Если пассажир не найден.</response>
-        [HttpDelete]
-        public IActionResult Delete(int id)
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
         {
-            Passenger? Passenger = Context.Passengers.Where(x => x.PassengerId == id).FirstOrDefault();
-            Context.Passengers.Remove(Passenger);
-            Context.SaveChanges();
+            var passanger = await _passanger.GetById(id);
+
+            if (passanger == null)
+            {
+                return BadRequest();
+            }
+            await _passanger.Delete(id);
             return Ok();
         }
     }

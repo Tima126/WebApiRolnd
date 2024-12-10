@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "I8/JHoGtBYY=",
+  "dgSpecHash": "lE31GepH9ko=",
   "success": true,
-  "projectFilePath": "C:\\WebApiRolnd\\BusinessLogic.Tests\\BusinessLogic.Tests.csproj",
+  "projectFilePath": "C:\\Users\\timaf\\OneDrive\\Рабочий стол\\RoldAirport\\BusinessLogic.Tests\\BusinessLogic.Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\timaf\\.nuget\\packages\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",
     "C:\\Users\\timaf\\.nuget\\packages\\coverlet.collector\\6.0.0\\coverlet.collector.6.0.0.nupkg.sha512",

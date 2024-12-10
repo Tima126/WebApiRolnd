@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Domain.Models;
+using Domain.Interfaces.Service;
+using WebApplication1.Contract;
+using Mapster;
 
 
 namespace SocNet.Controllers
@@ -9,21 +12,21 @@ namespace SocNet.Controllers
     [ApiController]
     public class BookingController : ControllerBase
     {
-        public RolandContext Context { get; }
+        private readonly IBookingService _booking;
 
-        public BookingController(RolandContext context)
+        public BookingController(IBookingService context)
         {
-            Context = context;
+            _booking = context;
         }
         /// <summary>
         /// Получение всех бронирований
         /// </summary>
         /// <returns>Список всех бронирования</returns>
         [HttpGet]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAll()
         {
-            List<Booking> Booking = Context.Bookings.ToList();
-            return Ok(Booking);
+            var booking = await _booking.GetAll();
+            return Ok(booking);
         }
         /// <summary>
         /// Получение бронирования по идентиификатору.
@@ -33,14 +36,14 @@ namespace SocNet.Controllers
         /// <response code="200">Возвращает бронирования.</response>
         /// <response code="404">Если бронирования не найден.</response>
         [HttpGet("{id}")]
-        public IActionResult GetById(int id)
+        public async Task<IActionResult> GetById(int id)
         {
-            Booking? Booking = Context.Bookings.Where(x => x.BookingId == id).FirstOrDefault();
-            if (Booking == null)
+            var booking = await _booking.GetById(id);
+            if (booking == null)
             {
-                return BadRequest("Not Found");
+                return NotFound();
             }
-            return Ok(Booking);
+            return Ok(booking);
         }
         /// <summary>
         /// Создание нового бронирования.
@@ -49,12 +52,13 @@ namespace SocNet.Controllers
         /// <returns>Созданный бронирования.</returns>
         /// <response code="201">Возвращает созданный бронирования.</response>
         [HttpPost]
-        public IActionResult Add(Booking Booking)
+        public async Task<IActionResult> Create(CreateBooking req)
         {
-            Context.Bookings.Add(Booking);
-            Context.SaveChanges();
+            var booking = req.Adapt<Booking>();
+            await _booking.Create(booking);
             return Ok();
         }
+
         /// <summary>
         /// Обновление существующего бронирования.
         /// </summary>
@@ -62,11 +66,12 @@ namespace SocNet.Controllers
         /// <returns>Результат обновления.</returns>
         /// <response code="204">Если бронирования успешно обновлен.</response>
         [HttpPut]
-        public IActionResult Update(Booking Booking)
+        public async Task<IActionResult> Update(CreateBooking req)
         {
-            Context.Bookings.Update(Booking);
-            Context.SaveChanges();
-            return Ok(Booking);
+            var booking = req.Adapt<Booking>();
+            await _booking.Update(booking);
+
+            return NoContent();
         }
         /// <summary>
         /// Удаление бронирования по индентификатору.
@@ -75,12 +80,16 @@ namespace SocNet.Controllers
         /// <returns>Результат удаления.</returns>
         /// <response code="200">Если бронирования успешно удален.</response>
         /// <response code="400">Если бронирования не найден.</response>
-        [HttpDelete]
-        public IActionResult Delete(int id)
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
         {
-            Booking? Booking = Context.Bookings.Where(x => x.BookingId == id).FirstOrDefault();
-            Context.Bookings.Remove(Booking);
-            Context.SaveChanges();
+            var booking = await _booking.GetById(id);
+
+            if (booking == null)
+            {
+                return BadRequest();
+            }
+            await _booking.Delete(id);
             return Ok();
         }
     }
