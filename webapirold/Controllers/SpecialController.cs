@@ -5,6 +5,7 @@ using Domain.Models;
 using WebApplication1.Contract;
 using Mapster;
 using Domain.Interfaces.Service;
+using webapirold.Contract;
 
 namespace SocNet.Controllers
 {
@@ -12,11 +13,11 @@ namespace SocNet.Controllers
     [ApiController]
     public class SpecialController : ControllerBase
     {
-        private ISpecialService _specialService;
+        private readonly ISpecialService _special;
 
-        public SpecialController(ISpecialService specialService)
+        public SpecialController(ISpecialService context)
         {
-            _specialService = specialService;
+            _special = context;
         }
         /// <summary>
         /// Получение всех данных
@@ -25,8 +26,8 @@ namespace SocNet.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var specialServices = await _specialService.GetAll();
-            return Ok(specialServices);
+            var special = await _special.GetAll();
+            return Ok(special);
         }
         /// <summary>
         /// Получение данных по идентиификатору.
@@ -38,7 +39,7 @@ namespace SocNet.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
-            var special = await _specialService.GetById(id);
+            var special = await _special.GetById(id);
             if (special == null)
             {
                 return NotFound();
@@ -52,11 +53,11 @@ namespace SocNet.Controllers
         /// <returns>Созданный данных.</returns>
         /// <response code="201">Возвращает созданный данных.</response>
         [HttpPost]
-        public async Task<IActionResult> Create(CreateSpecialService req)
+        public async Task<IActionResult> Create(CreateSpecial req)
         {
-            var special = req.Adapt<SpecialService>();
-            await _specialService.Create(special);
-            return Ok(special);
+            var special = req.Adapt<Special>();
+            await _special.Create(special);
+            return Ok();
         }
         /// <summary>
         /// Обновление существующего данных.
@@ -65,10 +66,11 @@ namespace SocNet.Controllers
         /// <returns>Результат обновления.</returns>
         /// <response code="204">Если данные успешно обновлен.</response>
         [HttpPut]
-        public async Task<IActionResult> Update(CreateSpecialService req)
+        public async Task<IActionResult> Update(CreateSpecial req)
         {
-            var special = req.Adapt<SpecialService>();
-            await _specialService.Update(special);
+            var special = req.Adapt<Special>();
+            await _special.Update(special);
+
             return NoContent();
         }
         /// <summary>
@@ -78,15 +80,16 @@ namespace SocNet.Controllers
         /// <returns>Результат удаления.</returns>
         /// <response code="200">Если данных успешно удален.</response>
         /// <response code="400">Если данных не найден.</response>
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var special = await _specialService.GetById(id);
+            var special = await _special.GetById(id);
+
             if (special == null)
             {
                 return BadRequest();
             }
-            await _specialService.Delete(id);
+            await _special.Delete(id);
             return Ok();
         }
     }

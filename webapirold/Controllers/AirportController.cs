@@ -1,6 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Domain.Models;
+using WebApplication1.Contract;
+using Domain.Interfaces.Service;
+using System.Net;
+using Mapster;
 
 namespace SocNet.Controllers
 {
@@ -8,11 +12,11 @@ namespace SocNet.Controllers
     [ApiController]
     public class AirportController : ControllerBase
     {
-        public RolandContext Context { get; }
+        private readonly IAirportService _airport;
 
-        public AirportController(RolandContext context)
+        public AirportController(IAirportService context)
         {
-            Context = context;
+            _airport = context;
         }
 
         /// <summary>
@@ -20,10 +24,10 @@ namespace SocNet.Controllers
         /// </summary>
         /// <returns>Список всех аерапортов</returns>
         [HttpGet]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAll()
         {
-            List<Airport> Airport = Context.Airports.ToList();
-            return Ok(Airport);
+            var airport = await _airport.GetAll();
+            return Ok(airport);
         }
         /// <summary>
         /// Получение аерапортов по идентиификатору.
@@ -34,14 +38,14 @@ namespace SocNet.Controllers
         /// <response code="404">Если аерапорт не найден.</response>
 
         [HttpGet("{id}")]
-        public IActionResult GetById(int id)
+        public async Task<IActionResult> GetById(int id)
         {
-            Airport? Airport = Context.Airports.Where(x => x.AirportId == id).FirstOrDefault();
-            if (Airport == null)
+            var airport = await _airport.GetById(id);
+            if (airport == null)
             {
-                return BadRequest("Not Found");
+                return NotFound();
             }
-            return Ok(Airport);
+            return Ok(airport);
         }
         /// <summary>
         /// Создание нового аерапорта.
@@ -50,10 +54,10 @@ namespace SocNet.Controllers
         /// <returns>Созданный аерапорт.</returns>
         /// <response code="201">Возвращает созданный аерапорт.</response>
         [HttpPost]
-        public IActionResult Add(Airport Airport)
+        public async Task<IActionResult> Create(CreateAirport req)
         {
-            Context.Airports.Add(Airport);
-            Context.SaveChanges();
+            var airport = req.Adapt<Airport>();
+            await _airport.Create(airport);
             return Ok();
         }
         /// <summary>
@@ -63,11 +67,12 @@ namespace SocNet.Controllers
         /// <returns>Результат обновления.</returns>
         /// <response code="204">Если аерапорт успешно обновлен.</response>
         [HttpPut]
-        public IActionResult Update(Airport Airport)
+        public async Task<IActionResult> Update(CreateAirport req)
         {
-            Context.Airports.Update(Airport);
-            Context.SaveChanges();
-            return Ok(Airport);
+            var airport = req.Adapt<Airport>();
+            await _airport.Update(airport);
+
+            return NoContent();
         }
         /// <summary>
         /// Удаление аерапорт по индентификатору.
@@ -76,12 +81,16 @@ namespace SocNet.Controllers
         /// <returns>Результат удаления.</returns>
         /// <response code="200">Если аерапорт успешно удален.</response>
         /// <response code="400">Если аерапорт не найден.</response>
-        [HttpDelete]
-        public IActionResult Delete(int id)
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
         {
-            Airport? Airport = Context.Airports.Where(x => x.AirportId == id).FirstOrDefault();
-            Context.Airports.Remove(Airport);
-            Context.SaveChanges();
+            var airport = await _airport.GetById(id);
+
+            if (airport == null)
+            {
+                return BadRequest();
+            }
+            await _airport.Delete(id);
             return Ok();
         }
     }

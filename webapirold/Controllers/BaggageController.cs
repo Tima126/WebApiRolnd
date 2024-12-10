@@ -1,28 +1,32 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Domain.Models;
- 
+using WebApplication1.Contract;
+using Domain.Interfaces.Service;
+using Mapster;
 namespace SocNet.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class BaggageController : ControllerBase
     {
-        public RolandContext Context { get; }
+        private readonly IBaggageService _baggage;
 
-        public BaggageController(RolandContext context)
+
+        public BaggageController(IBaggageService context)
         {
-            Context = context;
+            _baggage = context;
         }
+
         /// <summary>
         /// Получение всех багажа
         /// </summary>
         /// <returns>Список всех багажей</returns>
         [HttpGet]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAll()
         {
-            List<Baggage> Baggage = Context.Baggages.ToList();
-            return Ok(Baggage);
+            var baggage = await _baggage.GetAll();
+            return Ok(baggage);
         }
         /// <summary>
         /// Получение багажей по идентиификатору.
@@ -32,14 +36,14 @@ namespace SocNet.Controllers
         /// <response code="200">Возвращает багаж.</response>
         /// <response code="404">Если багаж не найден.</response>
         [HttpGet("{id}")]
-        public IActionResult GetById(int id)
+        public async Task<IActionResult> GetById(int id)
         {
-            Baggage? Baggage = Context.Baggages.Where(x => x.BaggageId == id).FirstOrDefault();
-            if (Baggage == null)
+            var baggage = await _baggage.GetById(id);
+            if (baggage == null)
             {
-                return BadRequest("Not Found");
+                return NotFound();
             }
-            return Ok(Baggage);
+            return Ok(baggage);
         }
         /// <summary>
         /// Создание нового багажа.
@@ -48,10 +52,10 @@ namespace SocNet.Controllers
         /// <returns>Созданный багажа.</returns>
         /// <response code="201">Возвращает созданный багажа.</response>
         [HttpPost]
-        public IActionResult Add(Baggage Baggage)
+        public async Task<IActionResult> Create(CreateBaggage req)
         {
-            Context.Baggages.Add(Baggage);
-            Context.SaveChanges();
+            var baggage = req.Adapt<Baggage>();
+            await _baggage.Create(baggage);
             return Ok();
         }
         /// <summary>
@@ -61,11 +65,12 @@ namespace SocNet.Controllers
         /// <returns>Результат обновления.</returns>
         /// <response code="204">Если багажа успешно обновлен.</response>
         [HttpPut]
-        public IActionResult Update(Baggage Baggage)
+        public async Task<IActionResult> Update(CreateBaggage req)
         {
-            Context.Baggages.Update(Baggage);
-            Context.SaveChanges();
-            return Ok(Baggage);
+            var baggage = req.Adapt<Baggage>();
+            await _baggage.Update(baggage);
+
+            return NoContent();
         }
         /// <summary>
         /// Удаление багажа по индентификатору.
@@ -74,12 +79,16 @@ namespace SocNet.Controllers
         /// <returns>Результат удаления.</returns>
         /// <response code="200">Если багаж успешно удален.</response>
         /// <response code="400">Если багаж не найден.</response>
-        [HttpDelete]
-        public IActionResult Delete(int id)
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
         {
-            Baggage? Baggage = Context.Baggages.Where(x => x.BaggageId == id).FirstOrDefault();
-            Context.Baggages.Remove(Baggage);
-            Context.SaveChanges();
+            var baggage = await _baggage.GetById(id);
+
+            if (baggage == null)
+            {
+                return BadRequest();
+            }
+            await _baggage.Delete(id);
             return Ok();
         }
     }

@@ -9,7 +9,7 @@ using Domain.Interfaces.Repository;
 
 namespace DataAccess.Repositories
 {
-    internal class SpecialRepository : RepositoryBase<SpecialService>,ISpecialRepository
+    internal class SpecialRepository : RepositoryBase<Special>,ISpecialRepository
     {
         public SpecialRepository(RolandContext repositoryContext)
             : base(repositoryContext) 

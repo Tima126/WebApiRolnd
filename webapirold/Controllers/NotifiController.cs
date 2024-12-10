@@ -1,6 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Domain.Models;
+using Domain.Interfaces.Service;
+using WebApplication1.Contract;
+using webapirold.Contract;
+using Mapster;
 
 
 namespace SocNet.Controllers
@@ -9,11 +13,11 @@ namespace SocNet.Controllers
     [ApiController]
     public class NotifiController : ControllerBase
     {
-        public RolandContext Context { get; }
+        private readonly INotificationService _notification;
 
-        public NotifiController(RolandContext context)
+        public NotifiController(INotificationService context)
         {
-            Context = context;
+            _notification = context;
         }
 
         /// <summary>
@@ -21,10 +25,10 @@ namespace SocNet.Controllers
         /// </summary>
         /// <returns>Список всех уведомлений.</returns>
         [HttpGet]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAll()
         {
-            List<Notification> Notification = Context.Notifications.ToList();
-            return Ok(Notification);
+            var notification = await _notification.GetAll();
+            return Ok(notification);
         }
 
         /// <summary>
@@ -35,14 +39,14 @@ namespace SocNet.Controllers
         /// <response code="200">Возвращает уведомление.</response>
         /// <response code="400">Если уведомление не найдено.</response>
         [HttpGet("{id}")]
-        public IActionResult GetById(int id)
+        public async Task<IActionResult> GetById(int id)
         {
-            Notification? Notification = Context.Notifications.Where(x => x.NotificationId == id).FirstOrDefault();
-            if (Notification == null)
+            var notification = await _notification.GetById(id);
+            if (notification == null)
             {
-                return BadRequest("Not Found");
+                return NotFound();
             }
-            return Ok(Notification);
+            return Ok(notification);
         }
 
         /// <summary>
@@ -52,10 +56,10 @@ namespace SocNet.Controllers
         /// <returns>Созданное уведомление.</returns>
         /// <response code="200">Возвращает созданное уведомление.</response>
         [HttpPost]
-        public IActionResult Add(Notification Notification)
+        public async Task<IActionResult> Create(CreateNotification req)
         {
-            Context.Notifications.Add(Notification);
-            Context.SaveChanges();
+            var notification = req.Adapt<Notification>();
+            await _notification.Create(notification);
             return Ok();
         }
 
@@ -66,11 +70,12 @@ namespace SocNet.Controllers
         /// <returns>Результат обновления.</returns>
         /// <response code="200">Если уведомление успешно обновлено.</response>
         [HttpPut]
-        public IActionResult Update(Notification Notification)
+        public async Task<IActionResult> Update(CreateNotification req)
         {
-            Context.Notifications.Update(Notification);
-            Context.SaveChanges();
-            return Ok(Notification);
+            var notification = req.Adapt<Notification>();
+            await _notification.Update(notification);
+
+            return NoContent();
         }
 
         /// <summary>
@@ -80,12 +85,16 @@ namespace SocNet.Controllers
         /// <returns>Результат удаления.</returns>
         /// <response code="200">Если уведомление успешно удалено.</response>
         /// <response code="400">Если уведомление не найдено.</response>
-        [HttpDelete]
-        public IActionResult Delete(int id)
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
         {
-            Notification? Notification = Context.Notifications.Where(x => x.NotificationId == id).FirstOrDefault();
-            Context.Notifications.Remove(Notification);
-            Context.SaveChanges();
+            var notification = await _notification.GetById(id);
+
+            if (notification == null)
+            {
+                return BadRequest();
+            }
+            await _notification.Delete(id);
             return Ok();
         }
     }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Interfaces.Repository
 {
-    public interface ISpecialRepository : IRepositoryBase<SpecialService>
+    public interface ISpecialRepository : IRepositoryBase<Special>
     {
 
     }

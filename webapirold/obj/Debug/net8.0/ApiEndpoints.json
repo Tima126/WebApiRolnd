@@ -11,15 +11,15 @@
   },
   {
     "ContainingType": "SocNet.Controllers.AirportController",
-    "Method": "Add",
+    "Method": "Create",
     "RelativePath": "api/Airport",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "Airport",
-        "Type": "Domain.Models.Airport",
+        "Name": "req",
+        "Type": "WebApplication1.Contract.CreateAirport",
         "IsRequired": true
       }
     ],
@@ -34,25 +34,9 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "Airport",
-        "Type": "Domain.Models.Airport",
+        "Name": "req",
+        "Type": "WebApplication1.Contract.CreateAirport",
         "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "SocNet.Controllers.AirportController",
-    "Method": "Delete",
-    "RelativePath": "api/Airport",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -74,6 +58,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "SocNet.Controllers.AirportController",
+    "Method": "Delete",
+    "RelativePath": "api/Airport/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "SocNet.Controllers.BaggageController",
     "Method": "GetAll",
     "RelativePath": "api/Baggage",
@@ -85,15 +85,15 @@
   },
   {
     "ContainingType": "SocNet.Controllers.BaggageController",
-    "Method": "Add",
+    "Method": "Create",
     "RelativePath": "api/Baggage",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "Baggage",
-        "Type": "Domain.Models.Baggage",
+        "Name": "req",
+        "Type": "WebApplication1.Contract.CreateBaggage",
         "IsRequired": true
       }
     ],
@@ -108,25 +108,9 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "Baggage",
-        "Type": "Domain.Models.Baggage",
+        "Name": "req",
+        "Type": "WebApplication1.Contract.CreateBaggage",
         "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "SocNet.Controllers.BaggageController",
-    "Method": "Delete",
-    "RelativePath": "api/Baggage",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -148,6 +132,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "SocNet.Controllers.BaggageController",
+    "Method": "Delete",
+    "RelativePath": "api/Baggage/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "SocNet.Controllers.BookingController",
     "Method": "GetAll",
     "RelativePath": "api/Booking",
@@ -159,15 +159,15 @@
   },
   {
     "ContainingType": "SocNet.Controllers.BookingController",
-    "Method": "Add",
+    "Method": "Create",
     "RelativePath": "api/Booking",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "Booking",
-        "Type": "Domain.Models.Booking",
+        "Name": "req",
+        "Type": "WebApplication1.Contract.CreateBooking",
         "IsRequired": true
       }
     ],
@@ -182,25 +182,9 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "Booking",
-        "Type": "Domain.Models.Booking",
+        "Name": "req",
+        "Type": "WebApplication1.Contract.CreateBooking",
         "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "SocNet.Controllers.BookingController",
-    "Method": "Delete",
-    "RelativePath": "api/Booking",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -222,6 +206,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "SocNet.Controllers.BookingController",
+    "Method": "Delete",
+    "RelativePath": "api/Booking/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "SocNet.Controllers.CharterController",
     "Method": "GetAll",
     "RelativePath": "api/Charter",
@@ -233,15 +233,15 @@
   },
   {
     "ContainingType": "SocNet.Controllers.CharterController",
-    "Method": "Add",
+    "Method": "Create",
     "RelativePath": "api/Charter",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "Charter",
-        "Type": "Domain.Models.Charter",
+        "Name": "req",
+        "Type": "webapirold.Contract.CreateCharter",
         "IsRequired": true
       }
     ],
@@ -256,25 +256,9 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "Charter",
-        "Type": "Domain.Models.Charter",
+        "Name": "req",
+        "Type": "webapirold.Contract.CreateCharter",
         "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "SocNet.Controllers.CharterController",
-    "Method": "Delete",
-    "RelativePath": "api/Charter",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -296,9 +280,25 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "SocNet.Controllers.flController",
+    "ContainingType": "SocNet.Controllers.CharterController",
+    "Method": "Delete",
+    "RelativePath": "api/Charter/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SocNet.Controllers.flightController",
     "Method": "GetAll",
-    "RelativePath": "api/fl",
+    "RelativePath": "api/flight",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -306,41 +306,41 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "SocNet.Controllers.flController",
-    "Method": "Add",
-    "RelativePath": "api/fl",
+    "ContainingType": "SocNet.Controllers.flightController",
+    "Method": "Create",
+    "RelativePath": "api/flight",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "Flight",
-        "Type": "Domain.Models.Flight",
+        "Name": "req",
+        "Type": "WebApplication1.Contract.CreateAirport",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "SocNet.Controllers.flController",
+    "ContainingType": "SocNet.Controllers.flightController",
     "Method": "Update",
-    "RelativePath": "api/fl",
+    "RelativePath": "api/flight",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "Flight",
-        "Type": "Domain.Models.Flight",
+        "Name": "req",
+        "Type": "webapirold.Contract.CreateFlight",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "SocNet.Controllers.flController",
+    "ContainingType": "SocNet.Controllers.flightController",
     "Method": "Delete",
-    "RelativePath": "api/fl",
+    "RelativePath": "api/flight",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -354,9 +354,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "SocNet.Controllers.flController",
+    "ContainingType": "SocNet.Controllers.flightController",
     "Method": "GetById",
-    "RelativePath": "api/fl/{id}",
+    "RelativePath": "api/flight/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -381,15 +381,15 @@
   },
   {
     "ContainingType": "SocNet.Controllers.HisController",
-    "Method": "Add",
+    "Method": "Create",
     "RelativePath": "api/His",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "ChangeHistory",
-        "Type": "Domain.Models.ChangeHistory",
+        "Name": "req",
+        "Type": "webapirold.Contract.CreateChangesHistory",
         "IsRequired": true
       }
     ],
@@ -404,25 +404,9 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "ChangeHistory",
-        "Type": "Domain.Models.ChangeHistory",
+        "Name": "req",
+        "Type": "WebApplication1.Contract.CreateAirport",
         "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "SocNet.Controllers.HisController",
-    "Method": "Delete",
-    "RelativePath": "api/His",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -444,6 +428,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "SocNet.Controllers.HisController",
+    "Method": "Delete",
+    "RelativePath": "api/His/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "SocNet.Controllers.NotifiController",
     "Method": "GetAll",
     "RelativePath": "api/Notifi",
@@ -455,15 +455,15 @@
   },
   {
     "ContainingType": "SocNet.Controllers.NotifiController",
-    "Method": "Add",
+    "Method": "Create",
     "RelativePath": "api/Notifi",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "Notification",
-        "Type": "Domain.Models.Notification",
+        "Name": "req",
+        "Type": "webapirold.Contract.CreateNotification",
         "IsRequired": true
       }
     ],
@@ -478,25 +478,9 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "Notification",
-        "Type": "Domain.Models.Notification",
+        "Name": "req",
+        "Type": "webapirold.Contract.CreateNotification",
         "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "SocNet.Controllers.NotifiController",
-    "Method": "Delete",
-    "RelativePath": "api/Notifi",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -518,6 +502,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "SocNet.Controllers.NotifiController",
+    "Method": "Delete",
+    "RelativePath": "api/Notifi/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "SocNet.Controllers.PassengerController",
     "Method": "GetAll",
     "RelativePath": "api/Passenger",
@@ -529,15 +529,15 @@
   },
   {
     "ContainingType": "SocNet.Controllers.PassengerController",
-    "Method": "Add",
+    "Method": "Create",
     "RelativePath": "api/Passenger",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "Passenger",
-        "Type": "Domain.Models.Passenger",
+        "Name": "req",
+        "Type": "webapirold.Contract.CreatePassenger",
         "IsRequired": true
       }
     ],
@@ -552,25 +552,9 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "Passenger",
-        "Type": "Domain.Models.Passenger",
+        "Name": "req",
+        "Type": "webapirold.Contract.CreatePassenger",
         "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "SocNet.Controllers.PassengerController",
-    "Method": "Delete",
-    "RelativePath": "api/Passenger",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -592,6 +576,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "SocNet.Controllers.PassengerController",
+    "Method": "Delete",
+    "RelativePath": "api/Passenger/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "SocNet.Controllers.ReviewController",
     "Method": "GetAll",
     "RelativePath": "api/Review",
@@ -603,15 +603,15 @@
   },
   {
     "ContainingType": "SocNet.Controllers.ReviewController",
-    "Method": "Add",
+    "Method": "Create",
     "RelativePath": "api/Review",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "Review",
-        "Type": "Domain.Models.Review",
+        "Name": "req",
+        "Type": "webapirold.Contract.CreateReview",
         "IsRequired": true
       }
     ],
@@ -626,25 +626,9 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "Review",
-        "Type": "Domain.Models.Review",
+        "Name": "req",
+        "Type": "webapirold.Contract.CreateReview",
         "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "SocNet.Controllers.ReviewController",
-    "Method": "Delete",
-    "RelativePath": "api/Review",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -666,6 +650,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "SocNet.Controllers.ReviewController",
+    "Method": "Delete",
+    "RelativePath": "api/Review/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "SocNet.Controllers.RoleController",
     "Method": "GetAll",
     "RelativePath": "api/Role",
@@ -677,15 +677,15 @@
   },
   {
     "ContainingType": "SocNet.Controllers.RoleController",
-    "Method": "Add",
+    "Method": "Create",
     "RelativePath": "api/Role",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "Role",
-        "Type": "Domain.Models.Role",
+        "Name": "req",
+        "Type": "webapirold.Contract.CreateRole",
         "IsRequired": true
       }
     ],
@@ -700,25 +700,9 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "Role",
-        "Type": "Domain.Models.Role",
+        "Name": "req",
+        "Type": "webapirold.Contract.CreateRole",
         "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "SocNet.Controllers.RoleController",
-    "Method": "Delete",
-    "RelativePath": "api/Role",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -740,6 +724,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "SocNet.Controllers.RoleController",
+    "Method": "Delete",
+    "RelativePath": "api/Role/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "SocNet.Controllers.SpecialController",
     "Method": "GetAll",
     "RelativePath": "api/Special",
@@ -759,7 +759,7 @@
     "Parameters": [
       {
         "Name": "req",
-        "Type": "WebApplication1.Contract.CreateSpecialService",
+        "Type": "webapirold.Contract.CreateSpecial",
         "IsRequired": true
       }
     ],
@@ -775,24 +775,8 @@
     "Parameters": [
       {
         "Name": "req",
-        "Type": "WebApplication1.Contract.CreateSpecialService",
+        "Type": "webapirold.Contract.CreateSpecial",
         "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "SocNet.Controllers.SpecialController",
-    "Method": "Delete",
-    "RelativePath": "api/Special",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -814,6 +798,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "SocNet.Controllers.SpecialController",
+    "Method": "Delete",
+    "RelativePath": "api/Special/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "SocNet.Controllers.TiketController",
     "Method": "GetAll",
     "RelativePath": "api/Tiket",
@@ -833,7 +833,7 @@
     "Parameters": [
       {
         "Name": "req",
-        "Type": "WebApplication1.Contract.CreateTicket",
+        "Type": "webapirold.Contract.CrerateTicket",
         "IsRequired": true
       }
     ],
@@ -849,24 +849,8 @@
     "Parameters": [
       {
         "Name": "req",
-        "Type": "WebApplication1.Contract.CreateTicket",
+        "Type": "webapirold.Contract.CrerateTicket",
         "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "SocNet.Controllers.TiketController",
-    "Method": "Delete",
-    "RelativePath": "api/Tiket",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -888,6 +872,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "SocNet.Controllers.TiketController",
+    "Method": "Delete",
+    "RelativePath": "api/Tiket/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "SocNet.Controllers.UserController",
     "Method": "GetAll",
     "RelativePath": "api/User",
@@ -907,7 +907,7 @@
     "Parameters": [
       {
         "Name": "req",
-        "Type": "WebApplication1.Contract.CreateUserRequest",
+        "Type": "webapirold.Contract.CreateUser",
         "IsRequired": true
       }
     ],
@@ -923,7 +923,7 @@
     "Parameters": [
       {
         "Name": "req",
-        "Type": "WebApplication1.Contract.CreateUserRequest",
+        "Type": "webapirold.Contract.CreateUser",
         "IsRequired": true
       }
     ],

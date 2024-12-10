@@ -6,6 +6,7 @@ using BusinessLogic.Sevices;
 using WebApplication1.Contract;
 using Mapster;
 using Domain.Interfaces.Service;
+using webapirold.Contract;
 
 namespace SocNet.Controllers
 {
@@ -13,11 +14,11 @@ namespace SocNet.Controllers
     [ApiController]
     public class TiketController : ControllerBase
     {
-        private ITicketService _ticketService;
+        private readonly ITicketService _ticket;
 
-        public TiketController(ITicketService ticketService)
+        public TiketController(ITicketService context)
         {
-            _ticketService = ticketService;
+            _ticket = context;
         }
         /// <summary>
         /// Получение всех билетов
@@ -26,7 +27,7 @@ namespace SocNet.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var ticket = await _ticketService.GetAll();
+            var ticket = await _ticket.GetAll();
             return Ok(ticket);
         }
         /// <summary>
@@ -39,7 +40,7 @@ namespace SocNet.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
-            var ticket = await _ticketService.GetById(id);
+            var ticket = await _ticket.GetById(id);
             if (ticket == null)
             {
                 return NotFound();
@@ -53,11 +54,11 @@ namespace SocNet.Controllers
         /// <returns>Созданный билета.</returns>
         /// <response code="201">Возвращает созданный билета.</response>
         [HttpPost]
-        public async Task<IActionResult> Create(CreateTicket req)
+        public async Task<IActionResult> Create(CrerateTicket req)
         {
             var ticket = req.Adapt<Ticket>();
-            await _ticketService.Create(ticket);
-            return Ok(ticket);
+            await _ticket.Create(ticket);
+            return Ok();
         }
         /// <summary>
         /// Обновление существующего билеты.
@@ -66,10 +67,11 @@ namespace SocNet.Controllers
         /// <returns>Результат обновления.</returns>
         /// <response code="204">Если билеты успешно обновлен.</response>
         [HttpPut]
-        public async Task<IActionResult> Update(CreateTicket req)
+        public async Task<IActionResult> Update(CrerateTicket req)
         {
             var ticket = req.Adapt<Ticket>();
-            await _ticketService.Update(ticket);
+            await _ticket.Update(ticket);
+
             return NoContent();
         }
         /// <summary>
@@ -79,15 +81,16 @@ namespace SocNet.Controllers
         /// <returns>Результат удаления.</returns>
         /// <response code="200">Если билеты успешно удален.</response>
         /// <response code="400">Если билеты не найден.</response>
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var ticket = await _ticketService.GetById(id);
+            var ticket = await _ticket.GetById(id);
+
             if (ticket == null)
             {
                 return BadRequest();
             }
-            await _ticketService.Delete(id);
+            await _ticket.Delete(id);
             return Ok();
         }
     }

@@ -2017,11 +2017,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\WebApiRolnd\\Domain\\Domain.csproj",
+      "projectUniqueName": "C:\\Users\\timaf\\OneDrive\\Рабочий стол\\RoldAirport\\Domain\\Domain.csproj",
       "projectName": "Domain",
-      "projectPath": "C:\\WebApiRolnd\\Domain\\Domain.csproj",
+      "projectPath": "C:\\Users\\timaf\\OneDrive\\Рабочий стол\\RoldAirport\\Domain\\Domain.csproj",
       "packagesPath": "C:\\Users\\timaf\\.nuget\\packages\\",
-      "outputPath": "C:\\WebApiRolnd\\Domain\\obj\\",
+      "outputPath": "C:\\Users\\timaf\\OneDrive\\Рабочий стол\\RoldAirport\\Domain\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\timaf\\AppData\\Roaming\\NuGet\\NuGet.Config",

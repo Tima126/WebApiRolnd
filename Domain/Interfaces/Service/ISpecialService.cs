@@ -9,11 +9,11 @@ namespace Domain.Interfaces.Service
 {
     public interface ISpecialService
     {
-        Task<List<SpecialService>> GetAll();
-        Task<SpecialService> GetById(int id);
-        Task Create(SpecialService model);
+        Task<List<Special>> GetAll();
+        Task<Special> GetById(int id);
+        Task Create(Special model);
 
-        Task Update(SpecialService model);
+        Task Update(Special model);
         Task Delete(int id);
     }
 }
